@@ -1,4 +1,5 @@
 import "./App.css";
+import { GOOGLE_API_KEY } from "./config.js";
 import React, { Component } from "react";
 
 class App extends Component {
@@ -15,7 +16,10 @@ class App extends Component {
 
   getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.getCoordinates, this.handleLocationError);
+      navigator.geolocation.getCurrentPosition(
+        this.getCoordinates,
+        this.handleLocationError
+      );
     } else {
       alert("Geolocation is not supported by this browser.");
     }
@@ -56,6 +60,12 @@ class App extends Component {
         <p>Longitude : {this.state.longitude}</p>
         <h4>Google Reverse Geocoding</h4>
         <p>Address: {this.state.useAddress}</p>
+        {this.state.latitude && this.state.longitude ? (
+          <img
+            src={`https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false&key=${GOOGLE_API_KEY}`}
+            alt=""
+          />
+        ) : null}
       </div>
     );
   }
