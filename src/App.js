@@ -62,8 +62,8 @@ class App extends Component {
         <p>Address: {this.state.useAddress}</p>
         {this.state.latitude && this.state.longitude ? (
           <img
-            src={`https://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false&key=${GOOGLE_API_KEY}`}
-            alt=""
+            src={`https://maps.googleapis.com/maps/api/staticmap?center=${this.state.latitude},${this.state.longitude}&zoom=14&size=400x300&sensor=false&key=${GOOGLE_API_KEY}`}
+            alt="goggle maps"
           />
         ) : null}
       </div>
